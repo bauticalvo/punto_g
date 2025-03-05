@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
@@ -7,7 +7,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFFE0AAFF), // Color de la paleta
+      backgroundColor: Color(0xffE5EAFC), // Color de la paleta
       title: const Text(
         "App de Prueba",
         style: TextStyle(
@@ -17,7 +17,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       leading: IconButton(
-        icon: const HugeIcon(icon: HugeIcons.strokeRoundedMenu01, color: Colors.black),
+        icon: const Icon(FontAwesomeIcons.bars),
         onPressed: () {
           // Acción del menú
           Scaffold.of(context).openDrawer();

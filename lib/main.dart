@@ -1,5 +1,9 @@
 import 'package:app_de_prueba/config/theme/app_theme.dart';
+import 'package:app_de_prueba/src/footer/footer.dart';
 import 'package:app_de_prueba/src/header/lateral_menu.dart';
+import 'package:app_de_prueba/src/screens/rewards_screen.dart';
+import 'package:app_de_prueba/src/screens/settings_front.dart';
+import 'package:app_de_prueba/src/screens/shop_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app_de_prueba/src/header/header.dart';
 import 'package:app_de_prueba/src/screens/home_screen.dart';
@@ -25,21 +29,22 @@ class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  _MainScreenState createState() => _MainScreenState();
+  MainScreenState createState() => MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
+class MainScreenState extends State<MainScreen> {
+  int selectedIndex = 0;
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const SearchScreen(),
-    const SettingsScreen(),
+    const RewardsScreen(),
+    const ShopScreen(),
+    const SettingsScreen()
   ];
 
-  void _onItemTapped(int index) {
+  void onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -47,49 +52,9 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Header(),
-      body: _screens[_selectedIndex],
+      body: _screens[selectedIndex],
       drawer: const LateralMenu(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        backgroundColor: Colors.deepPurple, // Color de fondo
-        selectedItemColor: Colors.white, // Color del ítem seleccionado
-        unselectedItemColor: Colors.grey, // Color de los ítems no seleccionados
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Buscar',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Ajustes',
-          ),
-        ],
-      ),
+      bottomNavigationBar: Footer(onItemTapped: onItemTapped, selectedIndex: selectedIndex)
     );
-  }
-}
-
-// Nueva pantalla de búsqueda
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Pantalla de Búsqueda'));
-  }
-}
-
-// Nueva pantalla de ajustes
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Pantalla de Ajustes'));
   }
 }

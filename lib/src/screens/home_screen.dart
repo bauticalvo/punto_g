@@ -11,13 +11,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int count = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  const Color(0xFFE0AAFF),
-      body: Center(child: Text('Click${ count == 1 ? '' : 's'}: $count', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)), 
+      backgroundColor:  Color(0xffE5EAFC), 
+      body: Center(child: Text('HomeScreen', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)), 
       );
   }
 }

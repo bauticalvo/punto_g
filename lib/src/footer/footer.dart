@@ -1,24 +1,54 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Footer extends StatefulWidget {
-  const Footer({super.key});
+class Footer extends StatelessWidget {
+  final Function(int) onItemTapped;
+  final int selectedIndex;
 
-  @override
-  State<Footer> createState() => _FooterState();
-}
+  const Footer({super.key, required this.onItemTapped, required this.selectedIndex});
 
-class _FooterState extends State<Footer> {
-
-  
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 50,
-      color: const Color(0xFFE0AAFF),
-      child: const Center(child: Text('Footer', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),),
+      decoration: const BoxDecoration(
+        color: Color(0xffE5EAFC), 
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: onItemTapped,
+        backgroundColor: Colors.transparent, // Hacerlo transparente para que el color del Container se vea
+        selectedItemColor: Color(0xff5A189A),  
+        unselectedItemColor: Color(0xff9D4EDD),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.house),
+            label: 'Inicio',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.gift),
+            label: 'Recompensas',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.shop),
+            label: 'Tienda',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.user),
+            label: 'Perfil',
+          ),
+        ],
+      ),
     );
   }
 }
