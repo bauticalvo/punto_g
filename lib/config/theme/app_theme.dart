@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 
-
-const List<Color> _colorThemes = [
-  Color(0xFFFE9E02),
-  Color.fromARGB(255, 52, 254, 2),  
-];
-
 class AppTheme {
-  final int selectedColor;
+  static const Color primary = Color(0xFF2E3A59); // Azul oscuro
+  static const Color secondary = Color(0xFF5042F7); // Azul vibrante
+  static const Color accent = Color(0xFF9B96FA); // Azul claro
+  static const Color background = Color(0xFFE5EAFC); // Azul muy claro
+  static const Color surface = Color(0xFFF2F5FF); // Casi blanco
 
-  AppTheme({this.selectedColor = 0})
-  :assert(selectedColor >= 0 && selectedColor < _colorThemes.length,
-  "Selected color must be between 0 and ${_colorThemes.length - 1}");
-
-  ThemeData theme() {
+  static ThemeData theme() {
     return ThemeData(
       useMaterial3: true,
-      colorSchemeSeed: _colorThemes[selectedColor],
-
+      colorScheme: ColorScheme(
+        brightness: Brightness.light,
+        primary: primary,
+        secondary: secondary,
+        tertiary: surface,
+        surface: background,
+        error: Colors.red,
+        onPrimary: Colors.white,
+        onSecondary: Colors.white,
+        onTertiary: accent,
+        onSurface: primary,
+        onError: Colors.white,
+      ),
     );
   }
 }

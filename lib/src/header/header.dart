@@ -7,22 +7,33 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xffE5EAFC), // Color de la paleta
-      title: const Text(
-        "App de Prueba",
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.black, // Texto en negro
-        ),
-      ),
-      leading: IconButton(
+      leading: Row(
+        children: [
+          SizedBox(width: 10),
+          IconButton(
         icon: const Icon(FontAwesomeIcons.bars),
         onPressed: () {
           // Acción del menú
           Scaffold.of(context).openDrawer();
         },
       ),
+      ]),
+      actions: <Widget>[
+        Row(
+          children: [
+            IconButton(
+              icon: const Icon(FontAwesomeIcons.bell),
+              onPressed: () {
+                // Acción de la notificación
+              },
+            ),
+            CircleAvatar(
+              backgroundImage: const AssetImage('assets/images/perfil.jpg')
+            ),
+            const SizedBox(width: 20),          
+          ]
+        )
+        ],
     );
   }
 

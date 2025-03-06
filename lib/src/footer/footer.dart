@@ -10,42 +10,52 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Color(0xffE5EAFC), 
-        borderRadius: BorderRadius.only(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black12,
+            color: Colors.black26,
             blurRadius: 10,
             spreadRadius: 2,
           ),
         ],
       ),
-      child: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: onItemTapped,
-        backgroundColor: Colors.transparent, // Hacerlo transparente para que el color del Container se vea
-        selectedItemColor: Color(0xff5A189A),  
-        unselectedItemColor: Color(0xff9D4EDD),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.house),
-            label: 'Inicio',
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _buildNavItem(FontAwesomeIcons.house, "Inicio", 0, context),
+          _buildNavItem(FontAwesomeIcons.gift, "Recompensas", 1,context),
+          _buildNavItem(FontAwesomeIcons.shop, "Tienda", 2,context),
+          _buildNavItem(FontAwesomeIcons.user, "Perfil", 3,context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavItem(IconData icon, String label, int index, BuildContext context) {
+    return GestureDetector(
+      onTap: () => onItemTapped(index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.primary,
+            size: 24,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.gift),
-            label: 'Recompensas',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.shop),
-            label: 'Tienda',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.user),
-            label: 'Perfil',
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.primary,
+            ),
           ),
         ],
       ),

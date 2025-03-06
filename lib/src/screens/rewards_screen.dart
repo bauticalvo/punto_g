@@ -15,7 +15,6 @@ class _RewardsScreenState extends State<RewardsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color(0xffE5EAFC), 
       body: Center(child: Text('RewardsScreen', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)), 
       );
   }

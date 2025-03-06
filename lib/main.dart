@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectedColor: 0).theme(),
+      theme: AppTheme.theme(),
       home: const MainScreen(),
     );
   }
@@ -54,7 +54,8 @@ class MainScreenState extends State<MainScreen> {
       appBar: const Header(),
       body: _screens[selectedIndex],
       drawer: const LateralMenu(),
-      bottomNavigationBar: Footer(onItemTapped: onItemTapped, selectedIndex: selectedIndex)
+      bottomNavigationBar: Footer(onItemTapped: onItemTapped, selectedIndex: selectedIndex),
+
     );
   }
 }

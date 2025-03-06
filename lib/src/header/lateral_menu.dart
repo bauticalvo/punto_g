@@ -9,7 +9,7 @@ class LateralMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(color: Color(0xFFFE9E02)),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

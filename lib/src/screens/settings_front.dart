@@ -15,7 +15,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color(0xffE5EAFC), 
       body: Center(child: Text('SettingsScreen', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)), 
 
       );
