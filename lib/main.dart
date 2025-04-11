@@ -1,9 +1,10 @@
 import 'package:app_de_prueba/config/theme/app_theme.dart';
 import 'package:app_de_prueba/src/footer/footer.dart';
 import 'package:app_de_prueba/src/header/lateral_menu.dart';
+import 'package:app_de_prueba/src/screens/qr_screen.dart';
 import 'package:app_de_prueba/src/screens/rewards_screen.dart';
-import 'package:app_de_prueba/src/screens/settings_front.dart';
-import 'package:app_de_prueba/src/screens/shop_screen.dart';
+import 'package:app_de_prueba/src/screens/challenges_screen.dart';
+import 'package:app_de_prueba/src/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app_de_prueba/src/header/header.dart';
 import 'package:app_de_prueba/src/screens/home_screen.dart';
@@ -37,9 +38,10 @@ class MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
+    const MapScreen(),
+    const QrScreen(),
     const RewardsScreen(),
-    const ShopScreen(),
-    const SettingsScreen()
+    const ChallengesScreen()
   ];
 
   void onItemTapped(int index) {

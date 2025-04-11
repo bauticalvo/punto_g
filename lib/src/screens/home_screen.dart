@@ -51,15 +51,46 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
       ),
       //SEGUNDO COMPONENTE
-      SizedBox(
+      Container(
         width: double.infinity,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        margin: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.onSecondary,
+          borderRadius: BorderRadius.circular(20),
+          ),
+        child: Column(
           children: [
-          const SizedBox(width: 0),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+            CustomButton(
+                  icon: FontAwesomeIcons.gift,
+                  label: 'Codigo QR',
+                  onPressed: () {
+                  },
+                ),
+                CustomButton(
+                  icon: FontAwesomeIcons.shop,
+                  label: 'Tienda',
+                  onPressed: () {
+                  },
+                ),
+                CustomButton(
+                  icon: FontAwesomeIcons.clockRotateLeft,
+                  label: 'Historial',
+                  onPressed: () {
+                  },
+                ),
+          ],),
+          const SizedBox(height: 20),
+          Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
           CustomButton(
                 icon: FontAwesomeIcons.gift,
-                label: 'Recompensas',
+                label: '',
                 onPressed: () {
                 },
               ),
@@ -75,14 +106,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                 },
               ),
-              CustomButton(
-                icon: FontAwesomeIcons.medal,
-                label: 'Niveles',
-                onPressed: () {
-                },
-              ),
-          const SizedBox(width: 0),
         ],),
+          ]
+        ),
       )
       ])
       );

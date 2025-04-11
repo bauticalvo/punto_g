@@ -12,26 +12,55 @@ class Footer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.onPrimary,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black26,
+            color:  Theme.of(context).colorScheme.secondary,
             blurRadius: 10,
             spreadRadius: 2,
           ),
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: Stack(
+        clipBehavior: Clip.none,
         children: [
-          _buildNavItem(FontAwesomeIcons.house, "Inicio", 0, context),
-          _buildNavItem(FontAwesomeIcons.gift, "Recompensas", 1,context),
-          _buildNavItem(FontAwesomeIcons.shop, "Tienda", 2,context),
-          _buildNavItem(FontAwesomeIcons.user, "Perfil", 3,context),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(FontAwesomeIcons.house, "Inicio", 0, context),
+              _buildNavItem(FontAwesomeIcons.map, "Locales", 1, context),
+              // Empty SizedBox to maintain spacing
+              SizedBox( width:60),
+              _buildNavItem(FontAwesomeIcons.gift, "Recompensas", 3, context),
+              _buildNavItem(FontAwesomeIcons.medal, "Desafios", 4, context),
+            ],
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: -40,
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.all(20), // Increased padding here
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).colorScheme.secondary,
+                      blurRadius: 8,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: _buildNavItem(FontAwesomeIcons.qrcode, "QR", 2, context),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -40,25 +69,36 @@ class Footer extends StatelessWidget {
   Widget _buildNavItem(IconData icon, String label, int index, BuildContext context) {
     return GestureDetector(
       onTap: () => onItemTapped(index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.primary,
-            size: 24,
+      child: index == 2 ? 
+        Icon(
+          icon,
+          color: Theme.of(context).colorScheme.onPrimary,
+          size: 30, // Made QR icon slightly bigger
+        ) :
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.2,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                color: selectedIndex == index ? 
+                Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.secondary,
+                size: 24,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: selectedIndex == index ? 
+                  Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.primary,
-            ),
-          ),
-        ],
-      ),
+        ),
     );
   }
 }
